@@ -19,7 +19,7 @@ class ColourChangerGame:
         self.window_size = window_size
 
     def play(self):
-        Grid()
+        g = Grid()
 
         # Initialize pygame
         pygame.init()
@@ -48,7 +48,7 @@ class ColourChangerGame:
                     column = pos[0] // (self.width + self.margin)
                     row = pos[1] // (self.height + self.margin)
                     # Set that location to one
-                    Grid.update_cell(row, column)
+                    g.update_cell(row, column)
                     print("Click ", pos, "Grid coordinates: ", row, column)
 
             # Set the screen background
@@ -58,7 +58,7 @@ class ColourChangerGame:
             for row in range(10):
                 for column in range(10):
                     color = WHITE
-                    if Grid.check_cell(row, column) == 1:
+                    if g.check_cell(row, column) == 1:
                         color = GREEN
                     pygame.draw.rect(screen,
                                      color,
