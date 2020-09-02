@@ -30,8 +30,6 @@ class Grid:
         # column numbers start at zero.)
         self.grid[1][5] = 1
 
-        print(self.grid)
-
         return self.grid
 
     def update_cell(self, row, column):
@@ -39,8 +37,3 @@ class Grid:
 
     def check_cell(self, row, column):
         return self.grid[row][column]
-
-
-if __name__ == "__main__":
-
-    print(Grid())

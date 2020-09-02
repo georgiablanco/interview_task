@@ -4,12 +4,6 @@ Class for the colour changing
 import pygame
 from array_backed_grid import Grid
 
-# Define some colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-
 
 class ColourChangerGame:
     def __init__(self, width, height, margin, window_size):
@@ -18,8 +12,17 @@ class ColourChangerGame:
         self.margin = margin
         self.window_size = window_size
 
+    # def loop(self):
+
     def play(self):
-        g = Grid()
+        grid = Grid()
+
+        colors = {
+            "white": (0, 0, 0),
+            "black": (255, 255, 255),
+            "green": (0, 255, 0),
+            "red": (255, 0, 0),
+        }
 
         # Initialize pygame
         pygame.init()
@@ -48,18 +51,18 @@ class ColourChangerGame:
                     column = pos[0] // (self.width + self.margin)
                     row = pos[1] // (self.height + self.margin)
                     # Set that location to one
-                    g.update_cell(row, column)
+                    grid.update_cell(row, column)
                     print("Click ", pos, "Grid coordinates: ", row, column)
 
             # Set the screen background
-            screen.fill(BLACK)
+            screen.fill(colors["black"])
 
             # Draw the grid
             for row in range(10):
                 for column in range(10):
-                    color = WHITE
-                    if g.check_cell(row, column) == 1:
-                        color = GREEN
+                    color = colors["white"]
+                    if grid.check_cell(row, column) == 1:
+                        color = colors["green"]
                     pygame.draw.rect(screen,
                                      color,
                                      [(self.margin + self.width) * column + self.margin,
