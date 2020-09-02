@@ -29,6 +29,8 @@ class ColourChangerGame:
         # Set the HEIGHT and WIDTH of the screen
         screen = pygame.display.set_mode(self.window_size)
 
+        print("I'm here")
+
         # Set title of screen
         pygame.display.set_caption("Array Backed Grid")
 
@@ -81,4 +83,4 @@ class ColourChangerGame:
 
 
 if __name__ == "__main__":
-    ColourChangerGame(20, 20, 5, [255, 255])
+    ColourChangerGame(20, 20, 5, [255, 255]).user_input()
