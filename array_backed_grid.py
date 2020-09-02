@@ -36,6 +36,7 @@ class GridCreator:
 
 
 
+
 if __name__ == "__main__":
     grid = GridCreator(20, 20, 5).create_2d_array()
     print(grid)
