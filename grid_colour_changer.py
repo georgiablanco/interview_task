@@ -2,7 +2,7 @@
 Class for the colour changing
 """
 import pygame
-from array_backed_grid import GridCreator
+from array_backed_grid import Grid
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -19,7 +19,7 @@ class ColourChangerGame:
         self.window_size = window_size
 
     def play(self):
-        grid = GridCreator(self.width, self.height, self.margin).create_2d_array()
+        Grid()
 
         # Initialize pygame
         pygame.init()
@@ -48,7 +48,7 @@ class ColourChangerGame:
                     column = pos[0] // (self.width + self.margin)
                     row = pos[1] // (self.height + self.margin)
                     # Set that location to one
-                    grid[row][column] = 1
+                    Grid.update_cell(row, column)
                     print("Click ", pos, "Grid coordinates: ", row, column)
 
             # Set the screen background
@@ -58,7 +58,7 @@ class ColourChangerGame:
             for row in range(10):
                 for column in range(10):
                     color = WHITE
-                    if grid[row][column] == 1:
+                    if Grid.check_cell(row, column) == 1:
                         color = GREEN
                     pygame.draw.rect(screen,
                                      color,
