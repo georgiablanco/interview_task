@@ -30,16 +30,19 @@ class ColourChangerGame:
         # Set title of screen
         pygame.display.set_caption("Array Backed Grid")
 
-    def loop(self):
-        grid = Grid()
-
+    def set_colors(self):
         colors = {
             "black": (0, 0, 0),
             "white": (255, 255, 255),
             "green": (0, 255, 0),
             "red": (255, 0, 0),
         }
+        return colors
 
+    def loop(self):
+        grid = Grid()
+
+        colors = self.set_colors()
 
         # Loop until the user clicks the close button.
         done = False
