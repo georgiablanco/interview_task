@@ -62,7 +62,7 @@ class ColourChangerGame:
                     print("Click ", pos, "Grid coordinates: ", row, column)
 
             # Set the screen background
-            self.screen.fill(colors["black"])
+            self.screen.fill(self.colors["black"])
 
             # Draw the grid
             for row in range(10):
