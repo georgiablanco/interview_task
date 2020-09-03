@@ -13,6 +13,7 @@ class ColourChangerGame:
         self.window_size = window_size
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode(self.window_size)
+        self.colors = self.set_colors()
 
     def play(self):
         self.init_pygame()
@@ -42,8 +43,6 @@ class ColourChangerGame:
     def loop(self):
         grid = Grid()
 
-        colors = self.set_colors()
-
         # Loop until the user clicks the close button.
         done = False
 
@@ -68,9 +67,9 @@ class ColourChangerGame:
             # Draw the grid
             for row in range(10):
                 for column in range(10):
-                    color = colors["white"]
+                    color = self.colors["white"]
                     if grid.check_cell(row, column) == 1:
-                        color = colors["green"]
+                        color = self.colors["green"]
                     pygame.draw.rect(self.screen,
                                      color,
                                      [(self.margin + self.width) * column + self.margin,
