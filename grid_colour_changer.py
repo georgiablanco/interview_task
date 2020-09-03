@@ -10,6 +10,8 @@ class ColourChangerGame:
         self.width = width
         self.height = height
         self.margin = margin
+        if width or height or margin <= 0:
+            raise Exception('Cannot have Negative numbers as input')
         self.window_size = window_size
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode(self.window_size)
@@ -92,4 +94,4 @@ class ColourChangerGame:
 
 
 if __name__ == "__main__":
-    ColourChangerGame(20, 20, 5, [255, 255]).play()
+    ColourChangerGame(-20, -20, 5, [255, 255]).play()

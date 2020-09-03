@@ -19,11 +19,13 @@ class TestArrayBackedGrid(unittest.TestCase):
         self.assertEqual(result, 1)
 
     # checking no negative numbers can be given to ColourChangerGame()
-    def test_inputs_correct(self):
+    def test_window_size(self):
         with self.assertRaises(pygame.error):
             color_changer = ColourChangerGame(-1, -1, -1, [-22,-22])
-        # with self.assertRaises(TypeError):
-        #     color_changer = ColourChangerGame(-1, -1, -1, [22, 22])
+
+    def test_function_inputs(self):
+        with self.assertRaises(Exception):
+            color_changer = ColourChangerGame(-1, -12, -1, [22, 22])
 
     # checking inputs have been given for ColourChangerGame()
     def test_inputs_given(self):
