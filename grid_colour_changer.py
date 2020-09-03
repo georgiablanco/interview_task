@@ -15,6 +15,10 @@ class ColourChangerGame:
         self.screen = pygame.display.set_mode(self.window_size)
         self.colors = self.set_colors()
 
+    # play the game
+    # (could have play and init_pygame in one function
+    # but for readability and showing structure it
+    # could be quite helpful to have it split like this)
     def play(self):
         self.init_pygame()
 
@@ -24,6 +28,7 @@ class ColourChangerGame:
         # on exit.
         pygame.quit()
 
+    # initialise pygame
     def init_pygame(self):
         # Initialize pygame
         pygame.init()
@@ -31,6 +36,7 @@ class ColourChangerGame:
         # Set title of screen
         pygame.display.set_caption("Array Backed Grid")
 
+    # set the colors wanted for the game
     def set_colors(self):
         colors = {
             "black": (0, 0, 0),
@@ -40,6 +46,7 @@ class ColourChangerGame:
         }
         return colors
 
+    # main program loop
     def loop(self):
         grid = Grid()
 
@@ -82,7 +89,6 @@ class ColourChangerGame:
 
             # Go ahead and update the screen with what we've drawn.
             pygame.display.flip()
-
 
 
 if __name__ == "__main__":
