@@ -1,4 +1,6 @@
 """
+ Class for creating initial grid
+
  Example program to show using an array to back a grid on-screen.
 
  Sample Python/Pygame Programs
