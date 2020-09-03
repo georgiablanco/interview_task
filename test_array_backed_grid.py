@@ -1,3 +1,7 @@
+"""
+testing array_backed_grid.py and grid_colour_changer.py
+"""
+
 import unittest, pygame
 from array_backed_grid import Grid
 from grid_colour_changer import ColourChangerGame
@@ -18,14 +22,15 @@ class TestArrayBackedGrid(unittest.TestCase):
         result = self.array_create.check_cell(2, 9)
         self.assertEqual(result, 1)
 
-    # def test_window_size(self):
-    #     with self.assertRaises(pygame.error):
-    #         color_changer = ColourChangerGame(-1, -1, -1, [-22, -22])
-
     # checking no negative numbers can be given to ColourChangerGame()
     def test_function_inputs(self):
         with self.assertRaises(Exception):
             color_changer = ColourChangerGame(1, -12, 1, [22, -22])
+
+    # don't need this now as function above ensures no negative numbers to screen
+    # def test_window_size(self):
+    #     with self.assertRaises(pygame.error):
+    #         color_changer = ColourChangerGame(-1, -1, -1, [-22, -22])
 
     # checking inputs have been given for ColourChangerGame()
     def test_inputs_given(self):
