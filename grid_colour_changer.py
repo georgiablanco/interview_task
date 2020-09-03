@@ -10,7 +10,7 @@ class ColourChangerGame:
         self.width = width
         self.height = height
         self.margin = margin
-        if width or height or margin <= 0:
+        if width or height or margin or window_size <= 0:
             raise Exception('Cannot have Negative numbers as input')
         self.window_size = window_size
         self.clock = pygame.time.Clock()
