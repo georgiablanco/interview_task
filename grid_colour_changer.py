@@ -11,33 +11,38 @@ class ColourChangerGame:
         self.height = height
         self.margin = margin
         self.window_size = window_size
-
-    # def loop(self):
+        self.clock = pygame.time.Clock()
+        self.screen = pygame.display.set_mode(self.window_size)
 
     def play(self):
-        grid = Grid()
+        self.init_pygame()
 
-        colors = {
-            "white": (0, 0, 0),
-            "black": (255, 255, 255),
-            "green": (0, 255, 0),
-            "red": (255, 0, 0),
-        }
+        self.loop()
 
+        # Be IDLE friendly. If you forget this line, the program will 'hang'
+        # on exit.
+        pygame.quit()
+
+    def init_pygame(self):
         # Initialize pygame
         pygame.init()
-
-        # Set the HEIGHT and WIDTH of the screen
-        screen = pygame.display.set_mode(self.window_size)
 
         # Set title of screen
         pygame.display.set_caption("Array Backed Grid")
 
+    def loop(self):
+        grid = Grid()
+
+        colors = {
+            "black": (0, 0, 0),
+            "white": (255, 255, 255),
+            "green": (0, 255, 0),
+            "red": (255, 0, 0),
+        }
+
+
         # Loop until the user clicks the close button.
         done = False
-
-        # Used to manage how fast the screen updates
-        clock = pygame.time.Clock()
 
         # -------- Main Program Loop -----------
         while not done:
@@ -55,7 +60,7 @@ class ColourChangerGame:
                     print("Click ", pos, "Grid coordinates: ", row, column)
 
             # Set the screen background
-            screen.fill(colors["black"])
+            self.screen.fill(colors["black"])
 
             # Draw the grid
             for row in range(10):
@@ -63,7 +68,7 @@ class ColourChangerGame:
                     color = colors["white"]
                     if grid.check_cell(row, column) == 1:
                         color = colors["green"]
-                    pygame.draw.rect(screen,
+                    pygame.draw.rect(self.screen,
                                      color,
                                      [(self.margin + self.width) * column + self.margin,
                                       (self.margin + self.height) * row + self.margin,
@@ -71,14 +76,11 @@ class ColourChangerGame:
                                       self.height])
 
             # Limit to 60 frames per second
-            clock.tick(60)
+            self.clock.tick(60)
 
             # Go ahead and update the screen with what we've drawn.
             pygame.display.flip()
 
-        # Be IDLE friendly. If you forget this line, the program will 'hang'
-        # on exit.
-        pygame.quit()
 
 
 if __name__ == "__main__":
